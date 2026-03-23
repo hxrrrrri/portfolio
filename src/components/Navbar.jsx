@@ -20,7 +20,7 @@ export default function Navbar() {
     <header className="flex items-center justify-between px-6 py-5 lg:px-20 border-b-2 border-black bg-white sticky top-0 z-50">
       <div className="flex items-center gap-8">
         <Link to="/" className="font-black text-2xl tracking-tighter hover:text-primary transition-colors">
-          MR.K
+          Hxrrrrri.
         </Link>
         <nav className="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
           <Link to="/projects" className={`hover:underline transition-colors ${pathname === '/projects' ? 'text-primary' : ''}`}>
