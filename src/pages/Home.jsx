@@ -293,16 +293,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* ── Photo — absolute right, TOP-ALIGNED with a gap from the name ── */}
-            <div
-              style={{
-                position: 'absolute',
-                right: '5%',
-                top: '8%',           // starts near the top — creates gap below the name
-                width: '34%',
-                zIndex: 10,
-              }}
-            >
+            {/* ── Photo — right side of the grey column ── */}
+            <div style={{
+              position: 'absolute',
+              right: '5%',
+              top: '8%',
+              width: '34%',
+              zIndex: 10,
+            }}>
               <div
                 ref={photoWrapRef}
                 onMouseEnter={handlePhotoEnter}
