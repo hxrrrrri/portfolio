@@ -42,6 +42,12 @@ npm run dev:vercel
 
 Open the local URL shown by Vercel and test the Contact page.
 
+Use this URL for `dev:vercel`:
+
+- `http://127.0.0.1:3000`
+
+Do not open `http://localhost:5173` while testing contact API via Vercel runtime.
+
 If you run `npm run dev` (Vite only), `/api/contact` will return `404` because Vite does not execute serverless API functions.
 
 ## Scripts
@@ -51,3 +57,16 @@ If you run `npm run dev` (Vite only), `/api/contact` will return `404` because V
 - `npm run build` - Production build
 - `npm run preview` - Preview production build
 - `npm run lint` - Lint project
+
+## Vite WebSocket Error Fix
+
+If you see `[vite] failed to connect to websocket`:
+
+1. Stop all running dev servers.
+2. Start only one command based on your goal:
+	- `npm run dev` for frontend-only work
+	- `npm run dev:vercel` for contact API testing
+3. For frontend-only dev, open `http://127.0.0.1:5173`.
+4. For API testing, open `http://127.0.0.1:3000`.
+
+Running both servers and switching URLs can cause HMR websocket errors in the browser.
