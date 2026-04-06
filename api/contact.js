@@ -48,12 +48,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Please provide a valid email address.' })
     }
 
-    const gmailUser = process.env.GMAIL_USER || 'harisankars.mbcet@gmail.com'
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '')
+    const gmailUser = (process.env.GMAIL_USER || process.env.SMTP_USER || 'harisankars.mbcet@gmail.com').trim()
+    const gmailAppPassword = (process.env.GMAIL_APP_PASSWORD || process.env.GMAIL_PASS || process.env.SMTP_PASS || '').replace(/\s+/g, '')
     const toAddress = process.env.CONTACT_TO || 'harisankars.mbcet@gmail.com'
 
     if (!gmailAppPassword) {
-      return res.status(500).json({ error: 'Email service is not configured yet.' })
+      return res.status(500).json({ error: 'Email service is not configured. Missing GMAIL_APP_PASSWORD.' })
     }
 
     const transporter = nodemailer.createTransport({
@@ -65,8 +65,6 @@ export default async function handler(req, res) {
         pass: gmailAppPassword,
       },
     })
-
-    await transporter.verify()
 
     const subject = `New portfolio message from ${name}`
     const textBody = [
@@ -102,7 +100,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Contact API error:', error)
 
-    if (error?.code === 'EAUTH') {
+    if (error?.code === 'EAUTH' || error?.responseCode === 535 || error?.responseCode === 534) {
       return res.status(500).json({ error: 'Gmail authentication failed. Check GMAIL_USER and GMAIL_APP_PASSWORD.' })
     }
 

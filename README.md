@@ -24,6 +24,11 @@ Required variables:
 - `GMAIL_APP_PASSWORD=<your_16_char_password>`
 - `CONTACT_TO=harisankars.mbcet@gmail.com`
 
+Also supported aliases:
+
+- `SMTP_USER` (same as `GMAIL_USER`)
+- `GMAIL_PASS` or `SMTP_PASS` (same as `GMAIL_APP_PASSWORD`)
+
 For Vercel deployment, add the same variables in Project Settings -> Environment Variables.
 
 ### 3. Run Locally
