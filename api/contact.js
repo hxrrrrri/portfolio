@@ -49,7 +49,7 @@ export default async function handler(req, res) {
     }
 
     const gmailUser = process.env.GMAIL_USER || 'harisankars.mbcet@gmail.com'
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD
+    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '')
     const toAddress = process.env.CONTACT_TO || 'harisankars.mbcet@gmail.com'
 
     if (!gmailAppPassword) {
@@ -57,12 +57,16 @@ export default async function handler(req, res) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: gmailUser,
         pass: gmailAppPassword,
       },
     })
+
+    await transporter.verify()
 
     const subject = `New portfolio message from ${name}`
     const textBody = [
@@ -97,6 +101,15 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true })
   } catch (error) {
     console.error('Contact API error:', error)
-    return res.status(500).json({ error: 'Could not send your message. Please try again.' })
+
+    if (error?.code === 'EAUTH') {
+      return res.status(500).json({ error: 'Gmail authentication failed. Check GMAIL_USER and GMAIL_APP_PASSWORD.' })
+    }
+
+    if (error?.code === 'ETIMEDOUT' || error?.code === 'ESOCKET') {
+      return res.status(500).json({ error: 'Could not connect to Gmail SMTP. Try again in a moment.' })
+    }
+
+    return res.status(500).json({ error: 'Could not send your message. Please try again.', code: error?.code || 'UNKNOWN' })
   }
 }
