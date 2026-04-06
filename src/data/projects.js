@@ -5,7 +5,7 @@ export const projects = [
     category: 'AI / Full-Stack',
     title: 'ECO-3D Studio',
     description:
-      'Geospatial AI platform that detects plot boundaries from satellite imagery, fetches live environmental data from 7 APIs, and generates eco-friendly floor plans as interactive 3D models.',
+      'Geospatial intelligence platform that maps plot boundaries from satellite imagery, blends live environmental signals from 7 APIs, and produces climate-aware floor plans as interactive 3D experiences.',
     tech: ['Next.js 14', 'TypeScript', 'FastAPI', 'React Three Fiber', 'YOLOv8', 'Railway'],
     link: 'https://github.com/hxrrrrri/ECO-3D',
     vercelLink: 'https://eco-3-d.vercel.app',
@@ -18,7 +18,7 @@ export const projects = [
     category: 'Full-Stack',
     title: 'KODO Agent',
     description:
-      'Self-hosted autonomous AI coding platform with FastAPI and React, real-time tool streaming, multi-provider LLM routing, session replay, collaboration mode, and secure permission controls for practical developer workflows.',
+      'Self-hosted autonomous AI engineering platform built with FastAPI and React, featuring real-time tool streaming, multi-model routing, session replay, collaboration workflows, and granular permission controls.',
     tech: ['FastAPI', 'React + TypeScript', 'SSE Streaming', 'Zustand', 'Docker', 'Provider Routing'],
     link: 'https://github.com/hxrrrrri/kodo-agent-export',
     variant: 'dark',
@@ -30,7 +30,7 @@ export const projects = [
     category: 'AI / Full-Stack',
     title: 'AlgoViz (Code-Viz)',
     description:
-      'Interactive algorithm intelligence studio that traces Python execution step-by-step and visualizes variable state, call stack flow, and timeline playback across arrays, trees, graphs, DP tables, and recursion.',
+      'Interactive algorithm intelligence studio that traces Python execution step by step and visualizes variable state, call-stack transitions, and timeline playback across arrays, trees, graphs, DP tables, and recursion.',
     tech: ['React + Vite', 'FastAPI', 'Python Tracing', 'Zustand', 'CodeMirror', 'Docker'],
     link: 'https://github.com/hxrrrrri',
     vercelLink: 'https://algoviz-delta.vercel.app/',
