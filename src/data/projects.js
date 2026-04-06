@@ -72,6 +72,31 @@ export const projects = [
     variant: 'dark',
     image: null,
   },
+  {
+    id: 7,
+    number: '007',
+    category: 'AI / Full-Stack',
+    title: 'AlgoViz (Code-Viz)',
+    description:
+      'Interactive algorithm intelligence studio that traces Python execution step-by-step and visualizes variable state, call stack flow, and timeline playback across arrays, trees, graphs, DP tables, and recursion.',
+    tech: ['React + Vite', 'FastAPI', 'Python Tracing', 'Zustand', 'CodeMirror', 'Docker'],
+    link: 'https://github.com/hxrrrrri',
+    vercelLink: 'https://algoviz-delta.vercel.app/',
+    variant: 'light',
+    image: null,
+  },
+  {
+    id: 8,
+    number: '008',
+    category: 'Full-Stack',
+    title: 'KODO Agent',
+    description:
+      'Self-hosted autonomous AI coding platform with FastAPI and React, real-time tool streaming, multi-provider LLM routing, session replay, collaboration mode, and secure permission controls for practical developer workflows.',
+    tech: ['FastAPI', 'React + TypeScript', 'SSE Streaming', 'Zustand', 'Docker', 'Provider Routing'],
+    link: 'https://github.com/hxrrrrri/kodo-agent-export',
+    variant: 'dark',
+    image: null,
+  },
 ]
 
 export const skills = {

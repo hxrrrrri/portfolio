@@ -217,6 +217,8 @@ function getHighlights(project) {
     4: ['Custom-trained YOLOv8 wildlife detection model', 'Real-time object tracking at 30+ FPS', 'Autonomous navigation with obstacle avoidance', 'OpenCV-based visual pipeline on embedded hardware', 'Alert system for ranger notifications'],
     5: ['Full MERN stack with JWT authentication', 'Role-based access control (admin / attendee)', 'Real-time event updates via WebSockets', 'MongoDB aggregation pipelines for analytics', 'Built collaboratively during ICT Academy internship'],
     6: ['Category-wise KTU activity point calculation', 'PDF export with jsPDF', 'Responsive form UI with live score tracking', 'Deployed as a static React app on Vercel', 'Used by 100+ students at MBCET'],
+    7: ['Secure Python execution tracing with line/call/return events', 'Timeline playback with synced variables, output, and call stack', 'Modular visualizers for arrays, graphs, trees, heaps, DP tables, and recursion', 'Streaming execution endpoint for progressive frontend updates', 'Dockerized multi-service architecture for reproducible deployment'],
+    8: ['Autonomous tool execution across file system, shell, git, and web tasks', 'Real-time SSE chat and tool stream for transparent agent workflows', 'Multi-provider LLM routing with strategy-based failover', 'Session replay, custom skills/prompts, and collaboration sharing links', 'Production-minded controls with feature flags, permissions, and observability'],
   }
   return map[project.id] || ['End-to-end implementation', 'Production deployed', 'Open source on GitHub']
 }

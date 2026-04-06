@@ -192,7 +192,7 @@ export default function Home() {
               </div>
               <div className="border-b border-white/10 pb-4">
                 <div className="text-[8px] font-black uppercase tracking-widest text-[#FF4D2D] mb-1">Projects</div>
-                <div className="text-4xl font-black leading-none">6+</div>
+                <div className="text-4xl font-black leading-none">8+</div>
                 <div className="text-[8px] font-bold uppercase tracking-widest text-white/50 mt-1">Built &amp; Shipped</div>
               </div>
               <div>
