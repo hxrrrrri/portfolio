@@ -12,6 +12,8 @@ const ArrowIcon = ({ size = 20, className = '' }) => (
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
   const [sent, setSent] = useState(false)
 
   useEffect(() => {
@@ -21,9 +23,39 @@ export default function Contact() {
     return () => tl.kill()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
+    setStatus('loading')
+    setError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          company: '',
+        }),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error('Contact API not found. Use Vercel runtime (npm run dev:vercel) or deploy on Vercel.')
+        }
+        throw new Error(result.error || 'Something went wrong. Please try again.')
+      }
+
+      setSent(true)
+      setForm({ name: '', email: '', message: '' })
+      setStatus('success')
+    } catch (err) {
+      setStatus('error')
+      setError(err.message || 'Could not send your message. Please try again.')
+    }
   }
 
   return (
@@ -89,6 +121,15 @@ export default function Contact() {
                 ) : (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <form onSubmit={handleSubmit} className="space-y-8">
+                      {/* Honeypot field to reduce bot submissions */}
+                      <input
+                        type="text"
+                        name="company"
+                        autoComplete="off"
+                        tabIndex={-1}
+                        className="hidden"
+                        aria-hidden="true"
+                      />
                       {[
                         { num: '01', label: 'Full Name', type: 'text', key: 'name', placeholder: 'ENTER NAME' },
                         { num: '02', label: 'Email', type: 'email', key: 'email', placeholder: 'EMAIL ADDRESS' },
@@ -101,6 +142,7 @@ export default function Contact() {
                             placeholder={placeholder}
                             value={form[key]}
                             onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                            disabled={status === 'loading'}
                             className="w-full bg-transparent border-b-2 border-black px-0 py-4 text-xl font-bold placeholder:text-black/20 focus:outline-none focus:border-[#FF4D2D] transition-colors"
                           />
                         </div>
@@ -113,14 +155,19 @@ export default function Contact() {
                           placeholder="TELL ME ABOUT IT"
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
+                          disabled={status === 'loading'}
                           className="w-full bg-transparent border-b-2 border-black px-0 py-4 text-xl font-bold placeholder:text-black/20 focus:outline-none focus:border-[#FF4D2D] transition-colors resize-none"
                         />
                       </div>
+                      {status === 'error' && (
+                        <p className="text-sm font-bold uppercase tracking-wide text-red-600">{error}</p>
+                      )}
                       <button
                         type="submit"
+                        disabled={status === 'loading'}
                         className="group flex items-center gap-4 bg-black text-white px-8 py-6 hover:bg-[#FF4D2D] transition-colors w-full lg:w-auto"
                       >
-                        <span className="text-lg font-black uppercase">Send Message</span>
+                        <span className="text-lg font-black uppercase">{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
                         <ArrowIcon size={20} className="group-hover:translate-x-2 transition-transform" />
                       </button>
                     </form>

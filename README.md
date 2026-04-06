@@ -1,16 +1,53 @@
-# React + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This portfolio is built with React + Vite and includes a contact form that sends messages directly to your Gmail using a Vercel serverless API.
 
-Currently, two official plugins are available:
+## Contact Form Setup (Gmail)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The backend mail route is in `api/contact.js`.
 
-## React Compiler
+### 1. Create a Gmail App Password
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Go to your Google Account.
+2. Enable 2-Step Verification if it is not enabled.
+3. Open App Passwords.
+4. Create a new app password for Mail.
+5. Copy the 16-character password.
 
-## Expanding the ESLint configuration
+### 2. Configure Environment Variables
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Use `.env.example` as reference.
+
+Required variables:
+
+- `GMAIL_USER=harisankars.mbcet@gmail.com`
+- `GMAIL_APP_PASSWORD=<your_16_char_password>`
+- `CONTACT_TO=harisankars.mbcet@gmail.com`
+
+For Vercel deployment, add the same variables in Project Settings -> Environment Variables.
+
+### 3. Run Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+To test the contact API locally, run with Vercel dev server (not plain Vite):
+
+```bash
+npm run dev:vercel
+```
+
+Open the local URL shown by Vercel and test the Contact page.
+
+If you run `npm run dev` (Vite only), `/api/contact` will return `404` because Vite does not execute serverless API functions.
+
+## Scripts
+
+- `npm run dev` - Vite frontend development server
+- `npm run dev:vercel` - Full local runtime including `/api/*` functions
+- `npm run build` - Production build
+- `npm run preview` - Preview production build
+- `npm run lint` - Lint project
