@@ -58,9 +58,9 @@ export default function About() {
           {/* Left */}
           <div className="about-hero-left lg:col-span-4 border-b-2 lg:border-b-0 lg:border-r-2 border-black p-8 lg:p-16 flex flex-col justify-between bg-[#E5E5E5]">
             <div>
-              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#FF4D2D] block mb-6">X/LABS</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#FF4D2D] block mb-6">X/ABOUT</span>
               <h1 className="text-[clamp(5rem,10vw,8rem)] font-black uppercase tracking-tighter leading-[0.8]">
-                lab<span className="text-[#FF4D2D]">.</span>
+                about<span className="text-[#FF4D2D]">.</span>
               </h1>
             </div>
             <div className="flex items-center gap-4 mt-8">

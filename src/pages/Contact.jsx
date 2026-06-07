@@ -74,7 +74,7 @@ export default function Contact() {
                   Contact / 001
                 </span>
                 <h1 className="text-7xl lg:text-9xl font-black leading-[0.8] tracking-tighter uppercase">
-                  Lab<span className="text-[#FF4D2D]">.</span>
+                  Contact<span className="text-[#FF4D2D]">.</span>
                 </h1>
               </div>
               <p className="text-sm font-medium leading-relaxed max-w-xs uppercase tracking-tight text-black/60">
@@ -175,7 +175,7 @@ export default function Contact() {
                     <div className="flex flex-col justify-between items-end">
                       <div className="hidden lg:block">
                         <div className="vertical-text text-[10px] font-bold uppercase tracking-[0.3em] text-black/30">
-                          HARISANKAR S. — PORTFOLIO 2025
+                          HARISANKAR S. — PORTFOLIO 2026
                         </div>
                       </div>
                       <div className="w-full lg:w-64 space-y-8 text-right lg:text-left">
