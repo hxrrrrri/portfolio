@@ -73,7 +73,7 @@ export default function Contact() {
                 <span className="text-sm font-bold uppercase tracking-tighter border-b-2 border-black pb-1 inline-block">
                   Contact / 001
                 </span>
-                <h1 className="text-[clamp(3.5rem,8vw,7rem)] font-black leading-[0.8] tracking-tighter uppercase">
+                <h1 className="text-[clamp(3.25rem,7vw,6.25rem)] font-black leading-[0.8] tracking-tighter uppercase">
                   Contact<span className="text-[#FF4D2D]">.</span>
                 </h1>
               </div>
